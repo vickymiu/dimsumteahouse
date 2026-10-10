@@ -1,7 +1,7 @@
 /* Add official contact details and social links before publishing. */
 window.SITE_CONFIG = {
   phone: "", // Example: +44 161 123 4567
-  email: "", // Restaurant booking/contact email
+  email: "Onedimsum54@gmail.com", // Restaurant booking/contact email
   menuUrl: "", // Public menu PDF or online menu
   facebookUrl: "",
   instagramUrl: "",
