@@ -98,6 +98,55 @@
 @media(max-width:600px){.menu-viewer{padding:60px 8px 42px}.menu-viewer img{max-width:98vw;max-height:calc(100vh - 112px)}.menu-viewer-control{width:38px;height:48px;font-size:29px}.menu-viewer-prev{left:7px}.menu-viewer-next{right:7px}}
 body.menu-viewer-open{overflow:hidden}
 
+
+/* Mobile-only refinements: keep desktop layout unchanged */
+.card-photo-carousel:not(.has-photos){display:none}
+@media(max-width:760px){
+  .top{font-size:.68rem;padding:6px 8px;letter-spacing:.04em}
+  header .nav{padding:7px 0 9px;gap:7px}
+  .brand{gap:8px}
+  .brand-logo{width:94px;height:78px;flex:0 0 94px}
+  .brand-text{font-size:.94rem;letter-spacing:.035em;line-height:1.15}
+  nav{gap:4px;padding-top:4px}
+  nav a{font-size:.78rem;white-space:nowrap}
+  .hero{padding:28px 0 38px}
+  .hero-grid{gap:26px}
+  .hero h1{font-size:clamp(2.45rem,10vw,3.5rem);margin:.22em 0}
+  .hero p{font-size:1rem;line-height:1.65}
+  .hero-grid>div:first-child .btn{display:block;width:100%;text-align:center;margin:10px 0 0;padding:13px 14px}
+  .hero-grid>div:first-child .tiny{margin-top:18px}
+  .hero-img{height:auto;aspect-ratio:4/3;min-height:250px;max-height:390px}
+  .hero-img .sticker{left:0;bottom:0;padding:11px 13px;font-size:.9rem}
+  .food-slideshow .slide-control{width:38px;height:42px}
+  section{padding:48px 0}
+  .head{margin-bottom:22px}
+  .head h2,.story h2,.menubox h2,.booking h2{font-size:clamp(2rem,8vw,2.6rem)}
+  .head p{margin-top:12px}
+  .cards{gap:18px}
+  .card img{height:220px}
+  .card-photo-carousel{height:220px}
+  .card div{padding:17px}
+  .storygrid{gap:26px}
+  .story img{height:auto;aspect-ratio:4/3}
+  .menubox{padding:22px}
+  .form{padding:20px 16px}
+  .fields{gap:13px}
+  input,select,textarea{font-size:16px;min-height:46px}
+  textarea{min-height:90px}
+  .form button[type="submit"]{width:100%;text-align:center}
+  .visitgrid{gap:18px}
+  .panel{padding:19px}
+  .links .btn{flex:1 1 100%;text-align:center}
+  .map{height:230px}
+  footer .foot{display:block}
+}
+@media(max-width:390px){
+  .brand-logo{width:78px;height:70px;flex-basis:78px}
+  .brand-text{font-size:.82rem}
+  nav a{font-size:.72rem}
+  .wrap{width:calc(100% - 28px)}
+}
+
 </style></head><body>
 <div class="top">MANCHESTER CHINATOWN · CANTONESE DIM SUM & CHINESE FOOD</div>
 <header><div class="wrap nav"><a class="brand" href="#home" aria-label="Dim Sum Teahouse home"><img class="brand-logo" id="brandLogo" src="images/logo.png" alt="Dim Sum Teahouse logo"><span class="brand-text">DIM SUM TEAHOUSE</span></a><nav><a href="#food">Our Food</a><a href="#story">Our Story</a><a href="#menu">Menu</a><a href="#visit">Find Us</a></nav><a class="btn primary" href="#book">Book a Table</a></div></header>
@@ -119,14 +168,15 @@ body.menu-viewer-open{overflow:hidden}
 <section id="menu"><div class="wrap menubox"><div><span class="eyebrow">What's cooking?</span><h2>Take a look at the menu.</h2><p>Explore our dishes before you visit. Please ask our team about ingredients and allergens.</p></div><a id="menuLink" class="btn primary" href="#menu">View Our Menu ↗</a></div></section>
 <section class="booking" id="book"><div class="wrap bookgrid"><div><span class="eyebrow">Save your seat</span><h2>Let's make it a date.</h2><p>Send us your preferred date and time. Our team will get back to confirm your booking.</p><p>♡ Perfect for sharing<br>⌂ Manchester Chinatown<br>✉ Booking requests confirmed by our team</p><p class="note">For urgent or same-day bookings, please call the restaurant directly.</p></div><form class="form" id="bookingForm" action="https://formsubmit.co/Onedimsum54@gmail.com" method="POST"><input type="hidden" name="_subject" value="New table booking request — Dim Sum Teahouse"><input type="hidden" name="_next" value="https://vickymiu.github.io/dimsumteahouse/"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><h3>Request a table</h3><div class="fields">
 <div class="field"><label for="name">Your name *</label><input id="name" name="name" required autocomplete="name"></div><div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-<div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div><div class="field"><label for="guests">Number of guests *</label><select id="guests" name="guests" required><option value="">Choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9+</option></select></div>
+<div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div><div class="field"><label for="guests">Number of guests *</label><select id="guests" name="guests" required><option value="">Choose</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option></select><span class="note">For parties of more than 15 guests, please call us to discuss your booking.</span></div>
 <div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div><div class="field"><label for="time">Preferred time *</label><select id="time" name="time" required><option value="">Choose</option><option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option></select></div>
-<div class="field full"><label for="notes">Anything else? (optional)</label><textarea id="notes" name="notes" placeholder="Special requests or allergies…"></textarea></div></div><p class="note">This is a request, not a confirmed reservation. The restaurant must reply to confirm.</p><button class="btn primary" type="submit">Send Booking Request ↗</button><p id="status" class="status" role="status"></p></form></div></section>
+<div class="field full"><label for="notes">Anything else? (optional)</label><textarea id="notes" name="notes" placeholder="Special requests or allergies…"></textarea></div></div><p class="note">This is a request, not a confirmed reservation. The restaurant must reply to confirm.</p><div class="field full privacy-consent"><label><input type="checkbox" name="privacy_consent" value="Accepted" required style="width:auto;margin-right:8px">I have read and accept the <a href="#privacy" style="color:var(--d);text-decoration:underline">Privacy Policy</a> *</label></div><!-- reCAPTCHA integration placeholder: configure a site key and server-side verification before enabling a real CAPTCHA. GitHub Pages alone cannot safely perform secret-key verification. --><button class="btn primary" type="submit">Send Booking Request ↗</button><p id="status" class="status" role="status"></p></form></div></section>
 
 <section id="opening-hours" class="opening-hours"><div class="wrap"><div class="hours-panel"><span class="eyebrow">Plan your visit</span><h2>Opening Hours</h2><p class="hours-pending">Our opening hours will be announced soon. Please check back for updates.</p><p class="note">营业时间待确认后更新。确认正式营业时间后，可以把这段提示替换成每天的具体时间。</p></div></div></section>
 <section id="visit"><div class="wrap"><div class="head"><div><span class="eyebrow">Right here in Chinatown</span><h2>Come say hello.</h2></div><p>Find us on Faulkner Street, in the heart of Manchester.</p></div><div class="visitgrid"><div class="panel"><h3>Find us</h3><p>Upper Ground Floor, 52–54 Faulkner Street,<br>Manchester, M1 4FH, United Kingdom</p><iframe class="map" title="Google Maps location" loading="lazy" src="https://maps.google.com/maps?q=52-54%20Faulkner%20Street%2C%20Manchester%20M1%204FH&z=16&output=embed"></iframe><div class="links"><a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=52-54%20Faulkner%20Street%2C%20Manchester%20M1%204FH">Open Google Maps ↗</a><a class="btn outline" target="_blank" rel="noopener" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.4786,-2.2374">Google Street View ↗</a></div></div>
-<div class="panel contact"><h3>Keep in touch</h3><p>Questions about the menu or a visit? We'd love to hear from you.</p><p>☎ <b>Call us:</b> <a id="phoneLink" href="#visit">Add restaurant phone number</a></p><p>✉ <b>Email us:</b> <a id="emailLink" href="#visit">Add restaurant email address</a></p><h3>Follow along</h3><div class="socials"><a id="facebookLink" href="#visit">Facebook ↗</a><a id="instagramLink" href="#visit">Instagram ↗</a><a id="redbookLink" href="#visit">小红书 ↗</a></div></div></div></div></section></main>
-<footer><div class="wrap foot"><div><b>一点心 DIM SUM TEAHOUSE</b><p>Dim sum, Chinese food and tea in Manchester Chinatown.</p></div><div><a href="#menu">Menu</a>　<a href="#book">Booking</a>　<a href="#visit">Contact</a>　<a href="#home">Back to top ↑</a></div></div></footer>
+<div class="panel contact"><h3>Keep in touch</h3><p>Questions about the menu or a visit? We'd love to hear from you.</p><p>☎ <b>Call us:</b> <a id="phoneLink" href="#visit">Add restaurant phone number</a></p><p>✉ <b>Email us:</b> <a id="emailLink" href="#visit">Add restaurant email address</a></p><h3>Follow along</h3><div class="socials"><a id="facebookLink" href="#visit">Facebook ↗</a><a id="instagramLink" href="#visit">Instagram ↗</a><a id="redbookLink" href="#visit">小红书 ↗</a></div></div></div></div></section>
+<section id="privacy" class="privacy-section"><div class="wrap"><div class="panel"><span class="eyebrow">Your information</span><h2>Privacy Policy</h2><p>When you submit a table booking request, we collect the information you provide, such as your name, email address, phone number, preferred date and time, party size and any notes you add.</p><p>We use this information to review and respond to your booking request, contact you about the reservation, and handle relevant questions or special requests. Submitting a request does not mean your reservation is confirmed.</p><p>Your form is processed using FormSubmit, a third-party form service. The information you submit may be processed by that service to deliver your request to the restaurant. Please avoid including unnecessary sensitive personal information in the notes field.</p><p>We will keep booking information only for as long as reasonably needed to manage the request, maintain relevant business records and meet applicable legal obligations, and take reasonable steps to protect it.</p><p>If you have a question about this policy or want to ask about information you submitted, please contact the restaurant using the contact details on this website.</p><p class="note">Please review and update this policy with the restaurant's final contact details and actual data-retention practices before the website is used for live bookings.</p></div></div></section></main>
+<footer><div class="wrap foot"><div><b>一点心 DIM SUM TEAHOUSE</b><p>Dim sum, Chinese food and tea in Manchester Chinatown.</p></div><div><a href="#menu">Menu</a>　<a href="#book">Booking</a>　<a href="#visit">Contact</a>　<a href="#privacy">Privacy Policy</a>　<a href="#home">Back to top ↑</a></div></div></footer>
 
 <div class="menu-viewer" id="menuViewer" role="dialog" aria-modal="true" aria-label="Restaurant menu">
   <button class="menu-viewer-close" id="menuViewerClose" type="button" aria-label="Close menu">×</button>
@@ -158,6 +208,18 @@ document.addEventListener("keydown",function(ev){if(!menuViewer.classList.contai
 if(c.phone)link("phoneLink","tel:"+c.phone.replace(/[^\d+]/g,""),c.phone);if(c.email)link("emailLink","mailto:"+c.email,c.email);link("facebookLink",c.facebookUrl||"#visit");link("instagramLink",c.instagramUrl||"#visit");link("redbookLink",c.xiaohongshuUrl||"#visit");
 const date=document.getElementById("date");const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());date.min=today.toISOString().slice(0,10);
 // Booking form submits directly to FormSubmit; the recipient must verify the address on first use.
+const bookingForm=document.getElementById("bookingForm");
+if(bookingForm){
+  bookingForm.addEventListener("submit",function(ev){
+    const guests=document.getElementById("guests");
+    const count=Number(guests.value);
+    if(!Number.isInteger(count)||count<1||count>15){
+      ev.preventDefault();
+      alert("For parties of more than 15 guests, please call us to discuss your booking.");
+      guests.focus();
+    }
+  });
+}
 
 // Food slideshow reads the photo list from images/food/photos.json.
 // To add photos later, upload them into images/food and add their filenames to photos.json; no HTML/JavaScript edits needed.
