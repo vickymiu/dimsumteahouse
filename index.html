@@ -86,12 +86,16 @@
 .restaurant-photo-carousel .restaurant-photo-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#6d746c}
 .restaurant-photo-carousel.has-photos .restaurant-photo-empty{display:none}
 
-/* Menu viewer modal with a clear close button */
+/* Menu viewer modal with carousel and a clear close button */
 .menu-viewer{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,20,17,.92);align-items:center;justify-content:center;padding:56px 16px 20px}
 .menu-viewer.open{display:flex}
 .menu-viewer img{display:block;max-width:96vw;max-height:calc(100vh - 80px);width:auto;height:auto;object-fit:contain;background:#fff}
 .menu-viewer-close{position:fixed;top:14px;right:18px;z-index:10000;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#173d30;font-size:32px;line-height:1;cursor:pointer;box-shadow:0 2px 12px #0005}
 .menu-viewer-close:focus-visible{outline:3px solid #b8893c;outline-offset:3px}
+.menu-viewer-control{position:fixed;top:50%;transform:translateY(-50%);z-index:10000;width:48px;height:58px;border:0;border-radius:8px;background:#fff;color:#173d30;font-size:36px;line-height:1;cursor:pointer;box-shadow:0 2px 12px #0005}
+.menu-viewer-prev{left:18px}.menu-viewer-next{right:18px}
+.menu-viewer-count{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:10000;background:#fff;color:#173d30;border-radius:20px;padding:6px 13px;font-size:14px;font-weight:600}
+@media(max-width:600px){.menu-viewer{padding:60px 8px 42px}.menu-viewer img{max-width:98vw;max-height:calc(100vh - 112px)}.menu-viewer-control{width:38px;height:48px;font-size:29px}.menu-viewer-prev{left:7px}.menu-viewer-next{right:7px}}
 body.menu-viewer-open{overflow:hidden}
 
 </style></head><body>
@@ -126,7 +130,10 @@ body.menu-viewer-open{overflow:hidden}
 
 <div class="menu-viewer" id="menuViewer" role="dialog" aria-modal="true" aria-label="Restaurant menu">
   <button class="menu-viewer-close" id="menuViewerClose" type="button" aria-label="Close menu">×</button>
-  <img id="menuViewerImage" src="images/menu.png" alt="Dim Sum Teahouse menu">
+  <button class="menu-viewer-control menu-viewer-prev" id="menuViewerPrev" type="button" aria-label="Previous menu image">‹</button>
+  <img id="menuViewerImage" src="images/menu.png" alt="Dim Sum Teahouse menu, image 1 of 3">
+  <button class="menu-viewer-control menu-viewer-next" id="menuViewerNext" type="button" aria-label="Next menu image">›</button>
+  <div class="menu-viewer-count" id="menuViewerCount" aria-live="polite">1 / 3</div>
 </div>
 
 <script src="site-config.js"></script><script>
@@ -135,12 +142,19 @@ const menuLink=document.getElementById("menuLink");
 const menuViewer=document.getElementById("menuViewer");
 const menuViewerImage=document.getElementById("menuViewerImage");
 const menuViewerClose=document.getElementById("menuViewerClose");
-const menuImageUrl=c.menuUrl||"images/menu.png";
-if(menuLink){menuLink.href=menuImageUrl;menuLink.textContent="View Our Menu ↗";menuLink.addEventListener("click",function(ev){ev.preventDefault();menuViewerImage.src=menuImageUrl;menuViewer.classList.add("open");document.body.classList.add("menu-viewer-open");menuViewerClose.focus();});}
+const menuViewerPrev=document.getElementById("menuViewerPrev");
+const menuViewerNext=document.getElementById("menuViewerNext");
+const menuViewerCount=document.getElementById("menuViewerCount");
+const menuImages=["images/menu.png","images/menu-2.png","images/menu-3.png"];
+let menuViewerIndex=0;
+function showMenuImage(index){menuViewerIndex=(index+menuImages.length)%menuImages.length;menuViewerImage.src=menuImages[menuViewerIndex];menuViewerImage.alt="Dim Sum Teahouse menu, image "+(menuViewerIndex+1)+" of "+menuImages.length;menuViewerCount.textContent=(menuViewerIndex+1)+" / "+menuImages.length;}
+if(menuLink){menuLink.href="images/menu.png";menuLink.textContent="View Our Menu ↗";menuLink.addEventListener("click",function(ev){ev.preventDefault();showMenuImage(0);menuViewer.classList.add("open");document.body.classList.add("menu-viewer-open");menuViewerClose.focus();});}
 function closeMenuViewer(){menuViewer.classList.remove("open");document.body.classList.remove("menu-viewer-open");if(menuLink)menuLink.focus();}
 menuViewerClose.addEventListener("click",closeMenuViewer);
+menuViewerPrev.addEventListener("click",function(){showMenuImage(menuViewerIndex-1);});
+menuViewerNext.addEventListener("click",function(){showMenuImage(menuViewerIndex+1);});
 menuViewer.addEventListener("click",function(ev){if(ev.target===menuViewer)closeMenuViewer();});
-document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&menuViewer.classList.contains("open"))closeMenuViewer();});
+document.addEventListener("keydown",function(ev){if(!menuViewer.classList.contains("open"))return;if(ev.key==="Escape")closeMenuViewer();if(ev.key==="ArrowLeft")showMenuImage(menuViewerIndex-1);if(ev.key==="ArrowRight")showMenuImage(menuViewerIndex+1);});
 if(c.phone)link("phoneLink","tel:"+c.phone.replace(/[^\d+]/g,""),c.phone);if(c.email)link("emailLink","mailto:"+c.email,c.email);link("facebookLink",c.facebookUrl||"#visit");link("instagramLink",c.instagramUrl||"#visit");link("redbookLink",c.xiaohongshuUrl||"#visit");
 const date=document.getElementById("date");const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());date.min=today.toISOString().slice(0,10);
 document.getElementById("bookingForm").addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("status");if(!c.email){s.textContent="Please add the restaurant email in site-config.js before publishing the booking form.";return}const d=new FormData(e.currentTarget);const body=encodeURIComponent("Table booking request\nName: "+d.get("name")+"\nGuest email: "+d.get("email")+"\nPhone: "+(d.get("phone")||"Not provided")+"\nGuests: "+d.get("guests")+"\nDate: "+d.get("date")+"\nTime: "+d.get("time")+"\nNotes: "+(d.get("notes")||"None"));s.textContent="Your email app should open. Press Send to submit this request; the restaurant must confirm.";location.href="mailto:"+c.email+"?subject="+encodeURIComponent("Table booking request — Dim Sum Teahouse")+"&body="+body});
