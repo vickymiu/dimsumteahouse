@@ -19,38 +19,76 @@
 .food-slideshow .sticker{z-index:3}
 @media(prefers-reduced-motion:reduce){.food-slideshow .food-slide{transition:none}}
 
+
+.food-slideshow{overflow:hidden;background:#e8dcc4;position:relative}
+.food-slideshow .slides{position:absolute;inset:0}
+.food-slideshow .food-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease;display:block}
+.food-slideshow .food-slide.active{opacity:1}
+.food-slideshow .slide-control{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:42px;height:46px;border:0;border-radius:3px;background:#073f2ccc;color:#fff8e8;font-size:2rem;line-height:1;cursor:pointer}
+.food-slideshow .slide-prev{left:12px}.food-slideshow .slide-next{right:12px}
+.food-slideshow .slide-dots{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:7px;z-index:3;max-width:80%;flex-wrap:wrap;justify-content:center}
+.food-slideshow .slide-dot{width:8px;height:8px;padding:0;border:1px solid white;border-radius:50%;background:#fff8e888;cursor:pointer}
+.food-slideshow .slide-dot.active{background:#fff8e8}
+.food-slideshow .sticker{z-index:3}
+.food-slideshow .slide-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;color:#073f2c;background:linear-gradient(135deg,#f7edda,#e8d6b6);font-weight:700}
+.food-slideshow.has-photos .slide-empty{display:none}
+@media(prefers-reduced-motion:reduce){.food-slideshow .food-slide{transition:none}}
+
+
+.category-slides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:42px}
+.category-slide-card{background:#fff;border:1px solid #e7dcc5;padding:16px;box-shadow:0 8px 25px #3518430b}
+.category-slide-card h3{margin:4px 0 8px;font-size:1.55rem}
+.category-slide-card p{margin:0 0 12px;font-size:.92rem}
+.category-carousel{height:310px;position:relative;overflow:hidden;background:#e8dcc4}
+.category-carousel .slides{position:absolute;inset:0}
+.category-carousel .food-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+.category-carousel .food-slide.active{opacity:1}
+.category-carousel .slide-control{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:42px;border:0;background:#073f2ccc;color:#fff8e8;font-size:1.8rem;cursor:pointer}
+.category-carousel .slide-prev{left:8px}.category-carousel .slide-next{right:8px}
+.category-carousel .slide-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;background:linear-gradient(135deg,#f7edda,#e8d6b6);color:#073f2c;font-weight:700}
+.category-carousel.has-photos .slide-empty{display:none}
+.category-carousel .slide-count{position:absolute;z-index:3;right:10px;bottom:10px;background:#073f2ccc;color:white;padding:4px 8px;font-size:.75rem;border-radius:3px}
+@media(max-width:760px){.category-slides{grid-template-columns:1fr}.category-carousel{height:260px}}
+
+
+
+/* Opening hours section */
+.opening-hours{padding:42px 0;background:#f1e7d3}
+.hours-panel{max-width:760px;margin:0 auto;padding:30px;border:1px solid #d8c6a7;border-radius:14px;background:#fbf6eb;text-align:center}
+.hours-panel h2{margin:12px 0}
+.hours-pending{font-size:1.05rem;color:var(--ink);margin:12px 0}
+.hours-panel .note{font-size:.88rem}
+@media(max-width:600px){.hours-panel{padding:22px 16px}}
 </style></head><body>
 <div class="top">MANCHESTER CHINATOWN · CANTONESE DIM SUM & CHINESE FOOD</div>
 <header><div class="wrap nav"><a class="brand" href="#home" aria-label="Dim Sum Teahouse home"><img class="brand-logo" id="brandLogo" src="images/logo.png" alt="Dim Sum Teahouse logo"><span class="brand-text">DIM SUM TEAHOUSE</span></a><nav><a href="#food">Our Food</a><a href="#story">Our Story</a><a href="#menu">Menu</a><a href="#visit">Find Us</a></nav><a class="btn primary" href="#book">Book a Table</a></div></header>
-<main id="home"><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">A taste of Canton, right in Manchester</span><h1>A little heart.<br>A lot of flavour.</h1><p>Welcome to Dim Sum Teahouse — a friendly spot in Manchester Chinatown for Cantonese dim sum, comforting Chinese dishes and a proper moment over tea.</p><a class="btn primary" href="#book">Request a Table ↗</a> <a class="btn outline" href="#menu">Explore Our Menu</a><p class="tiny">♡ Made to share &nbsp; · &nbsp; Manchester Chinatown</p></div><div class="hero-img food-slideshow" aria-label="Dim Sum Teahouse food photo slideshow">
-<div class="slides">
-<img class="food-slide active" src="images/hero-dim-sum.jpg" alt="A selection of Cantonese dim sum" loading="eager">
-<img class="food-slide" src="images/dim-sum.jpg" alt="Freshly prepared dim sum" loading="lazy">
-<img class="food-slide" src="images/chinese-food.jpg" alt="Chinese dishes served at the teahouse" loading="lazy">
-<img class="food-slide" src="images/tea.jpg" alt="Chinese tea served in a teacup" loading="lazy">
-</div>
-<button class="slide-control slide-prev" type="button" aria-label="Previous food photo">‹</button>
-<button class="slide-control slide-next" type="button" aria-label="Next food photo">›</button>
-<div class="slide-dots" aria-label="Choose a food photo">
-<button class="slide-dot active" type="button" aria-label="Show photo 1"></button>
-<button class="slide-dot" type="button" aria-label="Show photo 2"></button>
-<button class="slide-dot" type="button" aria-label="Show photo 3"></button>
-<button class="slide-dot" type="button" aria-label="Show photo 4"></button>
-</div>
+<main id="home"><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">A taste of Canton, right in Manchester</span><h1>A little heart.<br>A lot of flavour.</h1><p>Welcome to Dim Sum Teahouse — a friendly spot in Manchester Chinatown for Cantonese dim sum, comforting Chinese dishes and a proper moment over tea.</p><a class="btn primary" href="#book">Request a Table ↗</a> <a class="btn outline" href="#menu">Explore Our Menu</a><p class="tiny">♡ Made to share &nbsp; · &nbsp; Manchester Chinatown</p></div><div class="hero-img food-slideshow" aria-label="Dim Sum Teahouse featured food slideshow">
+<div class="slides" id="homeSlides"><img class="food-slide active" src="images/hero-dim-sum.jpg" alt="Featured Cantonese dim sum" loading="eager"></div>
+<button class="slide-control slide-prev" type="button" aria-label="Previous featured photo">‹</button>
+<button class="slide-control slide-next" type="button" aria-label="Next featured photo">›</button>
+<div class="slide-dots" id="homeSlideDots" aria-label="Choose a featured photo"></div>
 <div class="sticker">DIM SUM ♥<br>HAPPY HEARTS</div>
 </div></div></section>
 <div class="band"><div class="wrap bandin"><span>🥢 Cantonese favourites</span><span>🫖 Tea, chats & good company</span><span>♡ A warm welcome for everyone</span></div></div>
 <section id="food"><div class="wrap"><div class="head"><div><span class="eyebrow">Made for sharing</span><h2>Little bites. Big happiness.</h2></div><p>From delicate dumplings to comforting Chinese favourites, bring your appetite and your favourite people.</p></div><div class="cards">
-<article class="card"><img loading="lazy" src="images/dim-sum.jpg" alt="Dumplings"><div><span class="eyebrow">DIM SUM</span><h3>Dim sum to love</h3><p>Delicate, flavour-packed bites made for ordering a few and sharing around the table.</p></div></article>
-<article class="card"><img loading="lazy" src="images/chinese-food.jpg" alt="Chinese meal"><div><span class="eyebrow">CHINESE FOOD</span><h3>Comfort in every dish</h3><p>Discover satisfying Chinese dishes for lunch, dinner and everything in between.</p></div></article>
-<article class="card"><img loading="lazy" src="images/tea.jpg" alt="Tea in a cup"><div><span class="eyebrow">TEA TIME</span><h3>Stay for a cup</h3><p>Slow down, sip your tea and make a little more time for good company.</p></div></article></div></div></section>
-<section class="story" id="story"><div class="wrap storygrid"><div><span class="eyebrow">你好 · Hello</span><h2>Good food. Good tea. Good together.</h2><p>At Dim Sum Teahouse, we believe the best meals are the ones shared. Inspired by the warmth of Cantonese tea-house culture, we're here to bring people together over dim sum and Chinese food in the heart of Manchester Chinatown.</p><p>Come with friends, bring the family, or drop by when you're craving a comforting favourite.</p><a class="btn outline" style="border-color:#d6bfdc;color:white" href="#visit">Come and find us ↗</a></div><img loading="lazy" src="images/restaurant-interior.jpg" alt="A table set for a meal"></div></section>
+<article class="card"><img loading="lazy" data-food-card="0" src="images/food/food-01.jpg" alt="Dumplings"><div><span class="eyebrow">DIM SUM</span><h3>Dim sum to love</h3><p>Delicate, flavour-packed bites made for ordering a few and sharing around the table.</p></div></article>
+<article class="card"><img loading="lazy" data-food-card="1" src="images/food/food-02.jpg" alt="Chinese meal"><div><span class="eyebrow">CHINESE FOOD</span><h3>Comfort in every dish</h3><p>Discover satisfying Chinese dishes for lunch, dinner and everything in between.</p></div></article>
+<article class="card"><img loading="lazy" data-food-card="2" src="images/food/food-03.jpg" alt="Tea in a cup"><div><span class="eyebrow">TEA TIME</span><h3>Stay for a cup</h3><p>Slow down, sip your tea and make a little more time for good company.</p></div></article></div>
+<div class="category-slides" aria-label="Explore our photo collections">
+ <article class="category-slide-card"><span class="eyebrow">STEAMED & SHARED</span><h3>Dim Sum</h3><p>Har gow, siu mai, buns and all your dim sum favourites.</p><div class="category-carousel" data-photo-category="dim-sum"><div class="slides"></div><div class="slide-empty">Dim sum photos will appear here once uploaded.</div><button class="slide-control slide-prev" type="button" aria-label="Previous dim sum photo">‹</button><button class="slide-control slide-next" type="button" aria-label="Next dim sum photo">›</button><span class="slide-count">0 photos</span></div></article>
+ <article class="category-slide-card"><span class="eyebrow">FROM OUR KITCHEN</span><h3>Chinese Food</h3><p>Comforting Chinese dishes for lunch, dinner and sharing.</p><div class="category-carousel" data-photo-category="chinese-food"><div class="slides"></div><div class="slide-empty">Chinese food photos will appear here once uploaded.</div><button class="slide-control slide-prev" type="button" aria-label="Previous Chinese food photo">‹</button><button class="slide-control slide-next" type="button" aria-label="Next Chinese food photo">›</button><span class="slide-count">0 photos</span></div></article>
+ <article class="category-slide-card"><span class="eyebrow">POUR & UNWIND</span><h3>Tea & Drinks</h3><p>Tea, refreshing drinks and little moments to slow down.</p><div class="category-carousel" data-photo-category="tea-drinks"><div class="slides"></div><div class="slide-empty">Tea and drink photos will appear here once uploaded.</div><button class="slide-control slide-prev" type="button" aria-label="Previous tea photo">‹</button><button class="slide-control slide-next" type="button" aria-label="Next tea photo">›</button><span class="slide-count">0 photos</span></div></article>
+ <article class="category-slide-card"><span class="eyebrow">YOUR TABLE IS WAITING</span><h3>Restaurant</h3><p>A look inside our space, tables and welcoming atmosphere.</p><div class="category-carousel" data-photo-category="restaurant"><div class="slides"></div><div class="slide-empty">Restaurant photos will appear here once uploaded.</div><button class="slide-control slide-prev" type="button" aria-label="Previous restaurant photo">‹</button><button class="slide-control slide-next" type="button" aria-label="Next restaurant photo">›</button><span class="slide-count">0 photos</span></div></article>
+</div></div></section>
+<section class="story" id="story"><div class="wrap storygrid"><div><span class="eyebrow">你好 · Hello</span><h2>Good food. Good tea. Good together.</h2><p>At Dim Sum Teahouse, we believe the best meals are the ones shared. Inspired by the warmth of Cantonese tea-house culture, we're here to bring people together over dim sum and Chinese food in the heart of Manchester Chinatown.</p><p>Come with friends, bring the family, or drop by when you're craving a comforting favourite.</p><a class="btn outline" style="border-color:#d6bfdc;color:white" href="#visit">Come and find us ↗</a></div><img loading="lazy" id="storyFoodPhoto" src="images/food/food-04.jpg" alt="A table set for a meal"></div></section>
 <section id="menu"><div class="wrap menubox"><div><span class="eyebrow">What's cooking?</span><h2>Take a look at the menu.</h2><p>Explore our dishes before you visit. Please ask our team about ingredients and allergens.</p></div><a id="menuLink" class="btn primary" href="#menu">View Our Menu ↗</a></div></section>
 <section class="booking" id="book"><div class="wrap bookgrid"><div><span class="eyebrow">Save your seat</span><h2>Let's make it a date.</h2><p>Send us your preferred date and time. Our team will get back to confirm your booking.</p><p>♡ Perfect for sharing<br>⌂ Manchester Chinatown<br>✉ Booking requests confirmed by our team</p><p class="note">For urgent or same-day bookings, please call the restaurant directly.</p></div><form class="form" id="bookingForm"><h3>Request a table</h3><div class="fields">
 <div class="field"><label for="name">Your name *</label><input id="name" name="name" required autocomplete="name"></div><div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
 <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel"></div><div class="field"><label for="guests">Number of guests *</label><select id="guests" name="guests" required><option value="">Choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9+</option></select></div>
 <div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div><div class="field"><label for="time">Preferred time *</label><select id="time" name="time" required><option value="">Choose</option><option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option></select></div>
 <div class="field full"><label for="notes">Anything else? (optional)</label><textarea id="notes" name="notes" placeholder="Special requests or allergies…"></textarea></div></div><p class="note">This is a request, not a confirmed reservation. The restaurant must reply to confirm.</p><button class="btn primary" type="submit">Send Booking Request ↗</button><p id="status" class="status" role="status"></p></form></div></section>
+
+<section id="opening-hours" class="opening-hours"><div class="wrap"><div class="hours-panel"><span class="eyebrow">Plan your visit</span><h2>Opening Hours</h2><p class="hours-pending">Our opening hours will be announced soon. Please check back for updates.</p><p class="note">营业时间待确认后更新。确认正式营业时间后，可以把这段提示替换成每天的具体时间。</p></div></div></section>
 <section id="visit"><div class="wrap"><div class="head"><div><span class="eyebrow">Right here in Chinatown</span><h2>Come say hello.</h2></div><p>Find us on Faulkner Street, in the heart of Manchester.</p></div><div class="visitgrid"><div class="panel"><h3>Find the teahouse</h3><p>Upper Ground Floor, 52–54 Faulkner Street,<br>Manchester, M1 4FH, United Kingdom</p><iframe class="map" title="Google Maps location" loading="lazy" src="https://maps.google.com/maps?q=52-54%20Faulkner%20Street%2C%20Manchester%20M1%204FH&z=16&output=embed"></iframe><div class="links"><a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=52-54%20Faulkner%20Street%2C%20Manchester%20M1%204FH">Open Google Maps ↗</a><a class="btn outline" target="_blank" rel="noopener" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=53.4786,-2.2374">Google Street View ↗</a></div><p class="note">Street View depends on Google's available imagery; verify the entrance and pin before launch.</p></div>
 <div class="panel contact"><h3>Keep in touch</h3><p>Questions about the menu or a visit? We'd love to hear from you.</p><p>☎ <b>Call us:</b> <a id="phoneLink" href="#visit">Add restaurant phone number</a></p><p>✉ <b>Email us:</b> <a id="emailLink" href="#visit">Add restaurant email address</a></p><h3>Follow along</h3><div class="socials"><a id="facebookLink" href="#visit">Facebook ↗</a><a id="instagramLink" href="#visit">Instagram ↗</a><a id="redbookLink" href="#visit">小红书 ↗</a></div><p class="note">Phone, email, menu and social links are placeholders until you add official details in site-config.js.</p></div></div></div></section></main>
 <footer><div class="wrap foot"><div><b>一点心 DIM SUM TEAHOUSE</b><p>Dim sum, Chinese food and tea in Manchester Chinatown.</p></div><div><a href="#menu">Menu</a>　<a href="#book">Booking</a>　<a href="#visit">Contact</a>　<a href="#home">Back to top ↑</a></div></div></footer>
@@ -60,28 +98,125 @@ link("menuLink",c.menuUrl||"#menu","View Our Menu ↗");if(c.phone)link("phoneLi
 const date=document.getElementById("date");const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());date.min=today.toISOString().slice(0,10);
 document.getElementById("bookingForm").addEventListener("submit",e=>{e.preventDefault();const s=document.getElementById("status");if(!c.email){s.textContent="Please add the restaurant email in site-config.js before publishing the booking form.";return}const d=new FormData(e.currentTarget);const body=encodeURIComponent("Table booking request\nName: "+d.get("name")+"\nGuest email: "+d.get("email")+"\nPhone: "+(d.get("phone")||"Not provided")+"\nGuests: "+d.get("guests")+"\nDate: "+d.get("date")+"\nTime: "+d.get("time")+"\nNotes: "+(d.get("notes")||"None"));s.textContent="Your email app should open. Press Send to submit this request; the restaurant must confirm.";location.href="mailto:"+c.email+"?subject="+encodeURIComponent("Table booking request — Dim Sum Teahouse")+"&body="+body});
 
-// Food photo slideshow: rotates automatically and supports manual controls.
+// Food slideshow reads the photo list from images/food/photos.json.
+// To add photos later, upload them into images/food and add their filenames to photos.json; no HTML/JavaScript edits needed.
+(async function(){
+ const root=document.querySelector('.food-slideshow');
+ if(!root) return;
+ const slidesBox=document.getElementById('foodSlides');
+ const dotsBox=document.getElementById('slideDots');
+ const empty=document.getElementById('slideEmpty');
+ let files=[];
+ try{
+   const response=await fetch('images/food/photos.json?v=1');
+   if(!response.ok) throw new Error('Photo list not found');
+   const listed=await response.json();
+   if(Array.isArray(listed)) files=listed.filter(x=>typeof x==='string' && x.trim()).map(x=>x.trim());
+ }catch(err){ console.warn('Food photo list could not be loaded.',err); }
+ const loaded=[];
+ await Promise.all(files.map(file=>new Promise(resolve=>{
+   const img=new Image(); img.src='images/food/'+file;
+   img.alt='Food photo at Dim Sum Teahouse'; img.className='food-slide'; img.loading='eager';
+   img.onload=()=>{loaded.push({file,img});resolve()};
+   img.onerror=()=>resolve();
+ })));
+ // Keep the order in photos.json (Promise completion order is not guaranteed).
+ loaded.sort((a,b)=>files.indexOf(a.file)-files.indexOf(b.file));
+ if(!loaded.length){root.classList.remove('has-photos');return;}
+ root.classList.add('has-photos');
+ loaded.forEach(({img},i)=>{
+   if(i===0) img.classList.add('active');
+   slidesBox.appendChild(img);
+   const dot=document.createElement('button'); dot.type='button'; dot.className='slide-dot'+(i===0?' active':'');
+   dot.setAttribute('aria-label','Show food photo '+(i+1));
+   dot.addEventListener('click',()=>{show(i);restart()}); dotsBox.appendChild(dot);
+ });
+ // Reuse the same photos for the food cards and story image so no extra fixed filenames are needed.
+ document.querySelectorAll('[data-food-card]').forEach(el=>{
+   const i=Number(el.getAttribute('data-food-card'));
+   if(loaded[i]) el.src=loaded[i].img.src;
+ });
+ const story=document.getElementById('storyFoodPhoto'); if(story && loaded[Math.min(3,loaded.length-1)]) story.src=loaded[Math.min(3,loaded.length-1)].img.src;
+ const imgs=[...slidesBox.querySelectorAll('.food-slide')],dots=[...dotsBox.querySelectorAll('.slide-dot')];
+ let current=0,timer=null;
+ function show(index){current=(index+imgs.length)%imgs.length;imgs.forEach((img,i)=>img.classList.toggle('active',i===current));dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));}
+ function stop(){if(timer){clearInterval(timer);timer=null}}
+ function start(){stop();if(imgs.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show(current+1),4000)}
+ root.querySelector('.slide-prev').addEventListener('click',()=>{show(current-1);start()});
+ root.querySelector('.slide-next').addEventListener('click',()=>{show(current+1);start()});
+ root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',start);root.addEventListener('focusin',stop);root.addEventListener('focusout',start);
+ if(imgs.length<2){root.querySelector('.slide-prev').style.display='none';root.querySelector('.slide-next').style.display='none';dotsBox.style.display='none';}
+ start();
+})();
+
+
+// Four independent photo carousels. Add photos by uploading them to the matching folder
+// and listing their filenames in that folder's photos.json. No HTML edits needed.
+(async function(){
+ const categories=[...document.querySelectorAll('[data-photo-category]')];
+ for(const root of categories){
+  const category=root.dataset.photoCategory, box=root.querySelector('.slides'), empty=root.querySelector('.slide-empty'), count=root.querySelector('.slide-count');
+  let files=[];
+  try{const r=await fetch(`images/${category}/photos.json?v=1`);if(!r.ok)throw new Error('missing list');const data=await r.json();const names=Array.isArray(data)?data:(Array.isArray(data.photos)?data.photos:[]);files=names.filter(x=>typeof x==='string'&&x.trim()).map(x=>x.trim());}catch(e){console.info('No photo list for '+category+' yet.');}
+  const loaded=[];
+  await Promise.all(files.map(file=>new Promise(resolve=>{const img=new Image();img.src=`images/${category}/${file}`;img.alt=category.replaceAll('-',' ')+' at Dim Sum Teahouse';img.className='food-slide';img.onload=()=>{loaded.push({file,img});resolve()};img.onerror=()=>resolve()})));
+  loaded.sort((a,b)=>files.indexOf(a.file)-files.indexOf(b.file));
+  count.textContent=loaded.length+' photo'+(loaded.length===1?'':'s');
+  if(!loaded.length){root.querySelectorAll('.slide-control').forEach(b=>b.style.display='none');continue;}
+  root.classList.add('has-photos');
+  let current=0,timer=null;
+  loaded.forEach(({img},i)=>{if(i===0)img.classList.add('active');box.appendChild(img)});
+  const imgs=[...box.querySelectorAll('img')];
+  function show(i){current=(i+imgs.length)%imgs.length;imgs.forEach((im,j)=>im.classList.toggle('active',j===current));count.textContent=(current+1)+' / '+imgs.length;}
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  function start(){stop();if(imgs.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show(current+1),4000)}
+  root.querySelector('.slide-prev').addEventListener('click',()=>{show(current-1);start()});root.querySelector('.slide-next').addEventListener('click',()=>{show(current+1);start()});
+  root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',start);root.addEventListener('focusin',stop);root.addEventListener('focusout',start);
+  if(imgs.length<2){root.querySelectorAll('.slide-control').forEach(b=>b.style.display='none');}
+  start();
+ }
+})();
+
+
+// Homepage slideshow loads images/homepage/photos.json so photos can be added without editing HTML.
 (function(){
  const root=document.querySelector(".food-slideshow");
  if(!root) return;
- const slides=[...root.querySelectorAll(".food-slide")];
- const dots=[...root.querySelectorAll(".slide-dot")];
- let current=0, timer=null;
+ const container=document.getElementById("homeSlides");
+ const dotsWrap=document.getElementById("homeSlideDots");
+ let slides=[], dots=[], current=0, timer=null;
  function show(index){
+   if(!slides.length) return;
    current=(index+slides.length)%slides.length;
    slides.forEach((img,i)=>img.classList.toggle("active",i===current));
    dots.forEach((dot,i)=>dot.classList.toggle("active",i===current));
  }
- function start(){stop(); if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){timer=setInterval(()=>show(current+1),4000)}}
  function stop(){if(timer){clearInterval(timer);timer=null}}
+ function start(){stop();if(slides.length>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){timer=setInterval(()=>show(current+1),4000)}}
  root.querySelector(".slide-prev").addEventListener("click",()=>{show(current-1);start()});
  root.querySelector(".slide-next").addEventListener("click",()=>{show(current+1);start()});
- dots.forEach((dot,i)=>dot.addEventListener("click",()=>{show(i);start()}));
- root.addEventListener("mouseenter",stop);
- root.addEventListener("mouseleave",start);
- root.addEventListener("focusin",stop);
- root.addEventListener("focusout",start);
- show(0); start();
+ root.addEventListener("mouseenter",stop);root.addEventListener("mouseleave",start);
+ root.addEventListener("focusin",stop);root.addEventListener("focusout",start);
+ fetch("images/homepage/photos.json").then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{
+   const names=Array.isArray(data)?data:(data.photos||[]);
+   const valid=names.map(x=>typeof x==="string"?x:x.file).filter(Boolean);
+   if(!valid.length)return;
+   container.innerHTML="";dotsWrap.innerHTML="";
+   valid.forEach((name,i)=>{
+     const img=document.createElement("img");
+     img.className="food-slide"+(i===0?" active":"");
+     img.src="images/homepage/"+name;img.alt="Featured food at Dim Sum Teahouse";
+     img.loading=i===0?"eager":"lazy";
+     img.onerror=()=>{img.style.display="none";};
+     container.appendChild(img);slides.push(img);
+     const dot=document.createElement("button");dot.type="button";
+     dot.className="slide-dot"+(i===0?" active":"");
+     dot.setAttribute("aria-label","Show homepage photo "+(i+1));
+     dot.addEventListener("click",()=>{show(i);start()});
+     dotsWrap.appendChild(dot);dots.push(dot);
+   });
+   show(0);start();
+ }).catch(()=>{});
 })();
 
 </script></body></html>
