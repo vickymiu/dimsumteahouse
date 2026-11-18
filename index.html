@@ -247,7 +247,7 @@ menuViewerPrev.addEventListener("click",function(){showMenuImage(menuViewerIndex
 menuViewerNext.addEventListener("click",function(){showMenuImage(menuViewerIndex+1);});
 menuViewer.addEventListener("click",function(ev){if(ev.target===menuViewer)closeMenuViewer();});
 document.addEventListener("keydown",function(ev){if(!menuViewer.classList.contains("open"))return;if(ev.key==="Escape")closeMenuViewer();if(ev.key==="ArrowLeft")showMenuImage(menuViewerIndex-1);if(ev.key==="ArrowRight")showMenuImage(menuViewerIndex+1);});
-if(c.phone)link("phoneLink","tel:"+c.phone.replace(/[^\d+]/g,""),c.phone);if(c.email)link("emailLink","mailto:"+c.email,c.email);link("facebookLink",c.facebookUrl||"#visit");link("instagramLink",c.instagramUrl||"#visit");link("redbookLink",c.xiaohongshuUrl||"#visit");
+if(c.phone)link("phoneLink","tel:"+c.phone.replace(/[^\d+]/g,""),c.phone);if(c.email)link("emailLink","mailto:"+c.email,c.email);link("facebookLink","https://www.facebook.com/profile.php?id=61596855110109");link("instagramLink",c.instagramUrl||"#visit");link("redbookLink",c.xiaohongshuUrl||"#visit");
 
 // Privacy Policy modal: open from underlined link, close with X, backdrop or Escape.
 const privacyModal=document.getElementById("privacyModal");
